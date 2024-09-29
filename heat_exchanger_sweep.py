@@ -143,7 +143,7 @@ if __name__ == '__main__':
      'Pr': 0.72,
      'C_p_\infty': 1006*units('J/kg/K'),
      'C_d': 0.04,
-     '\epsilon': .85,
+     '\epsilon': .8,
      
      # Flight State @ Take-off
      #'T_{t\\infty}':       311.15 * (1 + 0.5*(gamma-1)*0.25**2) * units('K'),
@@ -200,7 +200,7 @@ delT_high = (T_r_high - np.average(np.asarray(sol['variables']['T_{t\\infty}']))
 small_size = 11
 large_size = 14
 
-cbar_ticks = [-.3,-.25,-.2,-.15, -.1, -.05, 0, .05]
+cbar_ticks = [-.35,-.3,-.25,-.2,-.15, -.1, -.05, 0, .05]
 plt.contourf(X, Y, Z, cbar_ticks)
 plt.plot(VR, (180+273.15-np.average(np.asarray(sol['variables']['T_{t\\infty}'])))/(np.average(np.asarray(sol['variables']['T_{t\\infty}'])))*np.ones(len(VR)), 'k--') # line indicating CHEETA Fuel Cell Operating Temperature
 plt.xticks(np.linspace(VR_low, VR_high, num=int(((VR_high - VR_low)/.05 + 1))))
