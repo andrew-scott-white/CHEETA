@@ -2,6 +2,8 @@
 This model was developed as part of the Center for High-Efficiency Electrical Technologies for Aircraft (CHEETA) sponsored by NASA.
 This code corresponds to that presented at Aviation 2023 in San Diego, CA - https://arc.aiaa.org/doi/abs/10.2514/6.2023-4345
 
+To run a particular configuration, run the corresponding mission_<config>.py file. For example, mission_H2FullyE.py will optimize a hydrogen-fueled, fuel-cell-powered aircraft for the specified mission.
+
 The following scripts correspond to the listed figures in the paper:
 
 Fig. 5: fuel_cell_sweep.py
