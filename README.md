@@ -5,6 +5,9 @@ This code corresponds to that presented at Aviation 2023 in San Diego, CA - http
 The following scripts correspond to the listed figures in the paper:
 
 Fig. 5: fuel_cell_sweep.py
+
 Fig. 6: heat_exchanger_sweep.py
+
 Fig. 8: PFEI_Chart.py (printed output compiled and plotted separately)
+
 Fig. 9: PFEI_Chart.py
