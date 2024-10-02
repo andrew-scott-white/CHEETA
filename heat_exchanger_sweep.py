@@ -143,7 +143,7 @@ if __name__ == '__main__':
      'Pr': 0.72,
      'C_p_\infty': 1006*units('J/kg/K'),
      'C_d': 0.04,
-     '\epsilon': .8`,
+     '\epsilon': .8,
      
      # Flight State @ Take-off
      #'T_{t\\infty}':       311.15 * (1 + 0.5*(gamma-1)*0.25**2) * units('K'),
