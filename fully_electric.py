@@ -73,7 +73,7 @@ class FullyElectricPerformance(Model):
             'total propulsion system fuel consumption during cruise')
         SFC = Variable('SFC', 'kg/hr/N',
             'thrust-specific fuel consumption')
-        P_m = Variable('(P_m)_{sys}', 'W/kg', 'propulsion system specific power')
+        P_m = Variable('(P_m)_{sys}', 'W/kg', 'Propulsion system specific power')
         HV = Variable('HV_{gg}', 'MJ/kg', 'fuel heating value of fuel') # satisfies the PFEI constraint in mission
         
         # BLI variables
@@ -127,7 +127,7 @@ class FullyElectricPerformance(Model):
             
             # post-processing performance parameters
             #SFC == fully_electric['N_s'] * stack_perf['\\dot{m}_{f}'] / (fully_electric['N_p']*fan_perf['F_{fan}']),
-            #P_m == fully_electric['N_p']*fan_perf['P_K'] / fully_electric['m_{propsys}'],
+            P_m == fully_electric['N_p']*fan_fuse_perf['P_K'] / fully_electric['m_{propsys}'],
             #fully_electric['N_s']*stack_perf['P_{max,fc}'] >= fully_electric['N_p']*fan_perf['P_{K,}'],
         ]
         

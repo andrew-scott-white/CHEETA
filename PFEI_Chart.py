@@ -53,7 +53,7 @@ R_des = 5500 # km
 m_pay = 15875 # kg
 
 # PEMFC stack specific power
-P_m = np.asarray([2000, 2425, 3000]) # W/kg
+P_m = np.asarray([2000, 2700, 3000]) # W/kg
 
 # GG thermal efficiency
 eta_th = np.asarray([0.5, 0.55, 0.6])
@@ -118,7 +118,9 @@ for oo in range(len(P_m)):
         #'N_s':                      18,
         
         # HEX constants
-        '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        #'\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+        '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
        # 'A_{face}':                700*units('in**2'),
     })
         
@@ -161,7 +163,9 @@ for oo in range(len(P_m)):
         'N_{eng}':                  2,
         #'//nu_{conv}':              .8,
         # HEX constants
-        '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        #'\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+        '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
         })
     
     feb = FullyElectricBatHybrid(N_p)
@@ -179,9 +183,11 @@ for oo in range(len(P_m)):
         'm_{comp}':                 .00001*units('kg'),
         #'N_s':                      6,
         # HEX constants
-        '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        #'\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+        '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+        '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
         # battery constants
-        '(P/m)_{bat}': 800*units('W/kg'), # conservative 2035 future estimate from LEARN report pg. 14
+        '(P/m)_{bat}': 800*units('W/kg'), # 2035 future estimate from LEARN report pg. 14
         '(E/m)_{\\rm bat}': 8*10**2*units('W*hr/kg'), # 2050 estimate of Li ion batteries based on 4% annual growth rate [Viswanathan, Nature, 2022]
         'N_b':  4,
         'm_{bat}': 100*units('kg'),

@@ -262,16 +262,20 @@ eta_net = sol['variables']['eta_{net}']
 P_out = sol['variables']['P_{out}']
 P_gross = sol['variables']['P_{gross}']
 P_max = sol['variables']['P_{max,fc}']
-P_sp = P_gross/1000
+P_sp = P_gross/P_max
+m = sol['variables']['m_{fc}']
     
 plt.figure(1)
-line1, = plt.plot(i_d, V, 'k-', label='Fuel Cell Voltage (V)')
-line2, = plt.plot(i_d, eta_fc, 'k--', label='Fuel Cell Efficiency')
+#line1, = plt.plot(i_d, V, 'k-', label='Fuel Cell Voltage (V)')
+line2, = plt.plot(i_d, eta_fc*100, 'k--', label='Fuel Cell Efficiency')
 #line3, = plt.plot(i_d, eta_net, 'k:', label='Stack Efficiency')
-line4, = plt.plot(i_d, P_sp, 'k:', label='Output Power Fraction')
+#line4, = plt.plot(i_d, P_sp*100, 'k:', label='Output Power Fraction')
 plt.xlabel("Internal Current Density (A/$cm^2$)")
-plt.ylabel("")
-plt.ylim([0,1.2])
+plt.ylabel("PEM Fuel Cell Efficiency")
+#plt.ylabel("")
+plt.ylim([0,100])
 plt.xlim([i_d_low, 4.5])
-plt.legend(handles=[line1, line2, line4], loc='lower right')
+plt.grid()
+#plt.legend(handles=[line1, line2, line4], loc='lower right')
     
+print(m)

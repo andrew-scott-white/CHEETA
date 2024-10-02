@@ -37,6 +37,8 @@ fe.substitutions.update({
     #'N_s':                      6,
     # HEX constants
     '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+    '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+    '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
 })
 
 # set up aircraft system (to which propulsion system is passed as input)
@@ -76,7 +78,7 @@ mission.substitutions.update({
     #'Cd':                        0.04, # [Robinson, 2017]
     
     # fuel cell constants
-    '(P/m)_{fc}':                2425*units('W/kg'), # Hypoint
+    '(P/m)_{fc}':                2700*units('W/kg'), 
     'P_{t\\fuel}':               5*units('bar'), # fuel storage pressure
     'A':                         446*units('cm**2'), # membrane area
     'N_{cells}':                 1080, # number of cells in a stack
@@ -118,7 +120,7 @@ init = {
     mission['pi_c']:                                            5,
     mission['F_{HEX}']:                                         1*units('kN'),
     mission['P_{gross}']:                                       1*units('kW'),
-    mission['dt']:                                           1000*units('s'),
+    mission['dt']:                                              1000*units('s'),
     mission.fs.performance.prop.fan_fuse_perf['F_{fan}']:       100000*units('kN'),
     mission.fs.performance.prop.fan_wing_perf['F_{fan}']:       100000*units('kN'),
     }
@@ -142,3 +144,14 @@ print("A_{face} (m^2): " + str(sol['variables']['A_{face}']))
 print("\\alpha: " + str(sol['variables']['\\alpha_{HEX}']))
 print("\epsilon: " + str(sol['variables']['\epsilon']))
 print("N_s: " + str(sol['variables']['N_s']))
+
+N = sol['variables']['N_s']
+P_m = sol['variables']['(P_m)_{sys}']
+m_fc = sol['variables']['m_{fc}']
+m_hex = sol['variables']['m_{HEX}']
+P_max = sol['variables']['P_{max,fc}']
+
+print(m_hex)
+u = P_max/(m_fc + m_hex)
+print(u)
+print(P_m)

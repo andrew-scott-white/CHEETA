@@ -87,6 +87,13 @@ if BLI == 'on':
     sol = model.localsolve(solver='mosek_conif', x0=init)
 else:
     sol = model.solve(solver='mosek_conif', x0=init)
+    
+m_gg = sol['variables']['m_{gg}']
+m_fan = sol['variables']['m_{fan}']
+P = sol['variables']['P_{shaft}']
+
+sp = 1000*P/(m_gg + m_fan)
+
 print(sol.summary())
 #print(sol.table())
 print("PFEI (kJ/kg/km): " + str(sol['variables']['PFEI']))
@@ -96,3 +103,4 @@ print("Fuel Weight (kg): " + str(sol['variables']['m_{fuel,tot}']))
 print("d_{fan} (in): " + str(sol['variables']['d_{fan}']*39.37))
 print("f_{wing,BLI}: " + str(sol['variables']['f_{wing,BLI}']))
 print("f_{fuse,BLI}: " + str(sol['variables']['f_{fuse,BLI}']))
+print("Sp. power: " + str(sp))
