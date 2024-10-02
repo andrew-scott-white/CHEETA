@@ -19,6 +19,8 @@ class HeatExchanger(Model):
         m = Variable('m_{HEX}', 'kg', 'mass of HEX + plumbing + coolant + pumps')
         psi = Variable('\psi', 'kg/m^2', 'thermal system mass scaling')
         sigma = Variable('\sigma', '-', 'HEX blockage factor (ratio of freeflow to frontal area)')
+        rho = Variable('\rho_{HEX}', 'kg/m^3', 'density of aluminum')
+        nu = Variable('(A/V)_{HEX}', 'ft^2/ft^3', 'area density')
       #  beta = Variable('\\beta', '-', '1 - \sigma')
       #  rho_HEX = Variable('\rho_{HEX}', 'kg/m^3', 'density of HEX material')
       #  Vol_HEX = Variable('Vol_{HEX}', 'm^3', 'volume of HEX material')
@@ -37,7 +39,8 @@ class HeatExchanger(Model):
         
         
         constraints = [ 
-           m == psi*A_r,
+          # m == psi*A_r,
+          m == A_w/nu*rho,
            r_h == L_c*sigma*A_r/A_w,
             ]
 
@@ -240,7 +243,9 @@ if __name__ == '__main__':
         
         HEX = HeatExchanger()
         HEX.substitutions.update({
-         '\psi': 5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+         #'\psi': 5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+         '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+         '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
         })
         
         for kk in range(len(VR)):
