@@ -36,7 +36,7 @@ fe.substitutions.update({
     'm_{comp}':                 .0001*units('kg'),
     #'N_s':                      6,
     # HEX constants
-    '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+    #'\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
     '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
     '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
 })

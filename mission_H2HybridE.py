@@ -39,7 +39,9 @@ he.substitutions.update({
     'N_s':                      6,
     'N_{eng}':                  2,
     # HEX constants
-    '\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+    #'\psi':                    5.02*units('kg/ft^2'), # from Boeing (Chellappa)
+    '(A/V)_{HEX}':          270*units('ft^2/ft^3'), #[Snyder, et al, 2009]
+    '\rho_{HEX}':           2710*units('kg/m^3'), #  Density of aluminum 
 })
 
 # set up aircraft system (to which propulsion system is passed as input)
